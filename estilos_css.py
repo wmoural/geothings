@@ -3,20 +3,27 @@ import streamlit as st
 def uploader():
     return """
     <style>
+    /* Container Principal */
     div[data-testid="stFileUploader"] {
         position: relative;
-        border: 2px dashed #C0C0C0;
-        border-radius: 20px;
-        background-color: #F8F9FA;
-        padding: 1rem 2rem;
+        border: 2px dashed #D1D5DB;
+        border-radius: 16px;
+        background: linear-gradient(145deg, #ffffff, #f3f4f6);
+        padding: 2.5rem 1rem;
         text-align: center;
-        transition: all 0.25s ease;
-        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
+
+    /* Efeito de Hover */
     div[data-testid="stFileUploader"]:hover {
-        border-color: #1E88E5;
-        background-color: #F1F6FB;
+        border-color: #3B82F6;
+        background: #F0F7FF;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
     }
+
+    /* Esconde o dropzone padrão mas mantém funcional */
     section[data-testid="stFileUploaderDropzone"] {
         opacity: 0 !important;
         position: absolute !important;
@@ -24,117 +31,96 @@ def uploader():
         z-index: 10 !important;
         cursor: pointer !important;
     }
+
+    /* Texto Superior (Instrução) */
     div[data-testid="stFileUploader"]::before {
-        content: "Arraste seu arquivo aqui ou";
-        color: #1E88E5;
-        font-weight: 600;
-        font-size: 1rem;
-        display: block;
-        margin-bottom: -1rem;
-        z-index: 1;
-        position: relative;
-    }
-    div[data-testid="stFileUploader"]::after {
-        content: "Selecionar arquivo";
-        display: inline-block;
-        background-color: #1E88E5;
-        color: #FFFFFF;
-        padding: 0.6rem 1.5rem;
-        border-radius: 6px;
-        font-size: 0.95rem;
+        content: "✨ Arraste seu arquivo aqui";
+        color: #4B5563;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
+        font-size: 1.1rem;
+        display: block;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Botão Centralizado */
+    div[data-testid="stFileUploader"]::after {
+        content: "Procurar no Computador";
+        display: inline-block;
+        background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%);
+        color: #FFFFFF;
+        padding: 0.75rem 1.8rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.025em;
         transition: all 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
         z-index: 1;
         position: relative;
     }
-    div[data-testid="stFileUploader"]:hover::after {
-        background-color: #1565C0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-    div[data-testid="stFileUploader"] div[role="listitem"] {
+
+    /* Esconde elementos nativos poluídos */
+    div[data-testid="stFileUploader"] div[role="listitem"], 
+    div[data-testid="stFileUploader"] .st-emotion-cache-1ae8k9d {
         display: none !important;
     }
+    
+    /* Remove textos padrão do Streamlit */
     div[data-testid="stFileUploader"] *:not([role="listitem"]) {
+        color: transparent !important;
         background: transparent !important;
         border: none !important;
-        color: transparent !important;
     }
     </style>
     """
     
 def uploader_depois(filename):
-    if not filename:
-        return ''
-    else:
-        return f"""
-        <style>
-        @keyframes fadeZoom {{
-            0% {{ opacity: 0; transform: scale(0.95); }}
-            100% {{ opacity: 1; transform: scale(1); }}
-        }}
-        div[data-testid="stFileUploader"] {{
-            position: relative;
-            border: 2px dashed #43A047;
-            border-radius: 20px;
-            background-color: #E8F5E9;
-            padding: 1rem 1rem;
-            text-align: center;
-            overflow: hidden;
-            animation: fadeZoom 0.5s ease-in-out;
-        }}
-        section[data-testid="stFileUploaderDropzone"] {{
-            opacity: 0 !important;
-            position: absolute !important;
-            inset: 0 !important;
-            z-index: 10 !important;
-            cursor: pointer !important;
-        }}
-        div[data-testid="stFileUploader"]::before {{
-            content: "Arquivo carregado";
-            color: #388E3C;
-            font-weight: 600;
-            font-size: 1rem;
-            display: block;
-            margin-bottom: -5rem;
-            z-index: 1;
-            position: relative;
-            animation: fadeZoom 0.6s ease-in-out;
-        }}
-        div[data-testid="stFileUploader"]::after {{
-            content: "{filename}";
-            display: inline-block;
-            background-color: #43A047;
-            color: #FFFFFF;
-            padding: 0.6rem 1.5rem;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-            z-index: 1;
-            position: relative;
-            animation: fadeZoom 0.8s ease-in-out;
-        }}
-        div[data-testid="stFileUploader"]:hover::after {{
-            background-color: #2E7D32;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }}
-        div[data-testid="stFileUploader"] div[role="listitem"] {{
-            display: none !important;
-        }}
-        div[data-testid="stFileUploader"] *:not([role="listitem"]) {{
-            background: transparent !important;
-            border: none !important;
-            color: transparent !important;
-        }}
-        .st-emotion-cache-zy6yx3 {{
-            padding: 3rem 1rem 5rem;
-        }}
-        .st-emotion-cache-1s2v671 {{
-            min-height: 0rem;
-        }}
-        </style>
-        """
+    if not filename: return ''
+    return f"""
+    <style>
+    @keyframes slideUp {{
+        from {{ opacity: 0; transform: translateY(10px); }}
+        to {{ opacity: 1; transform: translateY(0); }}
+    }}
 
+    div[data-testid="stFileUploader"] {{
+        position: relative;
+        border: 2px solid #10B981;
+        border-radius: 16px;
+        background: #ECFDF5;
+        padding: 2rem 1rem;
+        text-align: center;
+        animation: slideUp 0.4s ease-out;
+    }}
 
+    div[data-testid="stFileUploader"]::before {{
+        content: "✅ Arquivo pronto!";
+        color: #065F46;
+        font-weight: 700;
+        font-size: 1.1rem;
+        display: block;
+        margin-bottom: 0.8rem;
+        position: relative;
+    }}
+
+    div[data-testid="stFileUploader"]::after {{
+        content: "{filename}";
+        display: inline-block;
+        background: #10B981;
+        color: white;
+        padding: 0.5rem 1.2rem;
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 0.85rem;
+        position: relative;
+    }}
+
+    /* Estilização extra para o estado de sucesso */
+    div[data-testid="stFileUploader"] *:not([role="listitem"]) {{
+        color: transparent !important;
+    }}
+    </style>
+    """
