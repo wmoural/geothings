@@ -4,53 +4,15 @@ import streamlit.components.v1 as components
 # Configurando página
 st.set_page_config(page_title='geothings!', layout='wide', page_icon=':material/public:')
 
-# --- ANIMAÇÃO DE FUNDO (GRAFOS/PARTÍCULAS) ---
-st.markdown("""
-    <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        function initParticles() {
-            if (window.particlesJS) {
-                particlesJS('particles-js', {
-                    "particles": {
-                        "number": {"value": 100, "density": {"enable": true, "value_area": 800}},
-                        "color": {"value": "#a7f3d0"},
-                        "shape": {"type": "circle"},
-                        "opacity": {"value": 0.5},
-                        "size": {"value": 3},
-                        "line_linked": {
-                            "enable": true,
-                            "distance": 150,
-                            "color": "#a7f3d0",
-                            "opacity": 0.4,
-                            "width": 1
-                        },
-                        "move": {"enable": true, "speed": 1.5}
-                    },
-                    "interactivity": {
-                        "events": {
-                            "onhover": {"enable": true, "mode": "grab"},
-                            "onclick": {"enable": true, "mode": "push"}
-                        }
-                    },
-                    "retina_detect": true
-                });
-            } else {
-                setTimeout(initParticles, 100);
-            }
-        }
-        initParticles();
-    </script>
-""", unsafe_allow_html=True)
-
+# --- CSS PERSONALIZADO ---
 CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
-/* Estilo Base */
+/* Fundo Verde Pastel Simples */
 [data-testid="stAppViewContainer"] {
-    background: transparent;
+    background-color: #f0fdf4; /* Tom verde pastel bem suave */
 }
 
 body {
@@ -85,7 +47,7 @@ body {
 
 /* Grid de Cards */
 .card {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(16, 185, 129, 0.1);
     border-radius: 24px;
@@ -189,9 +151,3 @@ for col, tool in zip(cols, tools):
 
 # Espaçador inferior
 st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-
-
-
-
-
