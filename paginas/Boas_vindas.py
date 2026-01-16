@@ -5,23 +5,53 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title='geothings!', layout='wide', page_icon=':material/public:')
 
 # --- ANIMAÇÃO DE FUNDO (GRAFOS/PARTÍCULAS) ---
-# Injetando o container para o fundo animado
 st.markdown("""
     <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS('particles-js', {
             "particles": {
-                "number": {"value": 80, "density": {"enable": true, "value_area": 800}},
-                "color": {"value": "#10b981"},
+                "number": {
+                    "value": 100, 
+                    "density": {"enable": true, "value_area": 800}
+                },
+                "color": {"value": "#a7f3d0"}, /* Verde pastel suave */
                 "shape": {"type": "circle"},
-                "opacity": {"value": 0.3},
-                "size": {"value": 3},
-                "line_linked": {"enable": true, "distance": 150, "color": "#10b981", "opacity": 0.2, "width": 1},
-                "move": {"enable": true, "speed": 2}
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#a7f3d0", /* Cor das linhas do grafo */
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
             },
             "interactivity": {
-                "events": {"onhover": {"enable": true, "mode": "grab"}, "onclick": {"enable": true, "mode": "push"}}
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {"enable": true, "mode": "grab"}, /* Efeito de puxar ao passar o mouse */
+                    "onclick": {"enable": true, "mode": "push"},
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {"distance": 200, "line_linked": {"opacity": 0.8}}
+                }
             },
             "retina_detect": true
         });
@@ -174,6 +204,7 @@ for col, tool in zip(cols, tools):
 
 # Espaçador inferior
 st.markdown("<br><br><br>", unsafe_allow_html=True)
+
 
 
 
