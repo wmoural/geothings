@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # Configurando página
-st.set_page_config(page_title='Easy GeoMax!', layout='wide', page_icon=':material/public:')
+st.set_page_config(page_title='geothings!', layout='wide', page_icon=':material/public:')
 
 # --- ANIMAÇÃO DE FUNDO (GRAFOS/PARTÍCULAS) ---
 # Injetando o container para o fundo animado
@@ -128,8 +128,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 # --- CABEÇALHO ---
 st.markdown("""
 <div class="main-header">
-    <h1 class="title-logo">Easy <span>GeoMax!</span></h1>
-    <p class="subtitle-hero">A nova fronteira da inteligência geoespacial. Simples, rápido e acessível.</p>
+    <h1 class="title-logo">Easy <span>geothings!</span></h1>
 </div>
 """, unsafe_allow_html=True)
 
@@ -175,3 +174,4 @@ for col, tool in zip(cols, tools):
 
 # Espaçador inferior
 st.markdown("<br><br><br>", unsafe_allow_html=True)
+
