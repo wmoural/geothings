@@ -4,15 +4,14 @@ import streamlit.components.v1 as components
 # Configurando página
 st.set_page_config(page_title='geothings!', layout='wide', page_icon=':material/public:')
 
-# --- CSS PERSONALIZADO ---
 CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
-/* Fundo Verde Pastel Simples */
+/* Estilo Base */
 [data-testid="stAppViewContainer"] {
-    background-color: #f0fdf4; /* Tom verde pastel bem suave */
+    background: transparent;
 }
 
 body {
@@ -47,7 +46,7 @@ body {
 
 /* Grid de Cards */
 .card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(16, 185, 129, 0.1);
     border-radius: 24px;
