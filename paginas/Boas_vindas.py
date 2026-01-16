@@ -128,7 +128,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 # --- CABEÇALHO ---
 st.markdown("""
 <div class="main-header">
-    <h1 class="title-logo">Easy <span>geothings!</span></h1>
+    <h1 class="title-logo">geothings<span>geothings!</span></h1>
 </div>
 """, unsafe_allow_html=True)
 
@@ -174,4 +174,5 @@ for col, tool in zip(cols, tools):
 
 # Espaçador inferior
 st.markdown("<br><br><br>", unsafe_allow_html=True)
+
 
