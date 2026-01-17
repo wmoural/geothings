@@ -3,24 +3,18 @@ import streamlit as st
 def uploader():
     return """
     <style>
-    /* Container Principal */
     div[data-testid="stFileUploader"] {
-        position: relative;
-        border: 1px solid #E5E7EB;
-        border-radius: 12px;
-        background: #FAFAFA;
-        padding: 2.5rem 1.5rem;
+        border: 1px solid #E2E8F0;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+        padding: 1.5rem 1rem;
         text-align: center;
         transition: all 0.3s ease;
     }
-
-    /* Efeito de Hover */
     div[data-testid="stFileUploader"]:hover {
-        border-color: #1F2937;
-        background: #F9FAFB;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
     }
-
-    /* Esconde o dropzone padrao mas mantem funcional */
     section[data-testid="stFileUploaderDropzone"] {
         opacity: 0 !important;
         position: absolute !important;
@@ -28,98 +22,60 @@ def uploader():
         z-index: 10 !important;
         cursor: pointer !important;
     }
-
-    /* Texto Superior */
     div[data-testid="stFileUploader"]::before {
-        content: "Arraste seu arquivo aqui";
-        color: #6B7280;
-        font-family: 'Inter', -apple-system, sans-serif;
-        font-weight: 400;
+        content: "Arraste seu arquivo";
+        color: rgba(255,255,255,0.9);
+        font-weight: 500;
         font-size: 0.95rem;
         display: block;
-        margin-bottom: 1.25rem;
-        position: relative;
-        z-index: 1;
+        margin-bottom: 0.75rem;
     }
-
-    /* Botao Centralizado */
     div[data-testid="stFileUploader"]::after {
-        content: "Selecionar arquivo";
-        display: inline-block;
-        background: #1F2937;
-        color: #FFFFFF;
-        padding: 0.625rem 1.5rem;
+        content: "Selecionar";
+        background: rgba(255,255,255,0.95);
+        color: #667EEA;
+        padding: 0.5rem 1.25rem;
         border-radius: 6px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        letter-spacing: -0.01em;
-        transition: background 0.2s ease;
-        z-index: 1;
-        position: relative;
+        font-size: 0.8rem;
+        font-weight: 600;
     }
-
-    div[data-testid="stFileUploader"]:hover::after {
-        background: #374151;
-    }
-
-    /* Esconde elementos nativos */
-    div[data-testid="stFileUploader"] div[role="listitem"], 
-    div[data-testid="stFileUploader"] .st-emotion-cache-1ae8k9d {
-        display: none !important;
-    }
-    
-    /* Remove textos padrao do Streamlit */
-    div[data-testid="stFileUploader"] *:not([role="listitem"]) {
+    div[data-testid="stFileUploader"] * {
         color: transparent !important;
         background: transparent !important;
         border: none !important;
     }
     </style>
     """
-    
+
 def uploader_depois(filename):
     if not filename: return ''
     return f"""
     <style>
-    @keyframes fadeIn {{
-        from {{ opacity: 0; }}
-        to {{ opacity: 1; }}
-    }}
-
     div[data-testid="stFileUploader"] {{
-        position: relative;
-        border: 1px solid #D1D5DB;
-        border-radius: 12px;
-        background: #F9FAFB;
-        padding: 2rem 1.5rem;
+        border: 1px solid #10B981;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        padding: 1.5rem 1rem;
         text-align: center;
-        animation: fadeIn 0.3s ease;
     }}
-
     div[data-testid="stFileUploader"]::before {{
         content: "Arquivo carregado";
-        color: #1F2937;
-        font-family: 'Inter', -apple-system, sans-serif;
-        font-weight: 500;
-        font-size: 0.95rem;
+        color: rgba(255,255,255,0.95);
+        font-weight: 600;
+        font-size: 0.9rem;
         display: block;
-        margin-bottom: 0.75rem;
-        position: relative;
+        margin-bottom: 0.5rem;
     }}
-
     div[data-testid="stFileUploader"]::after {{
         content: "{filename}";
-        display: inline-block;
-        background: #E5E7EB;
-        color: #374151;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        font-family: 'SF Mono', 'Fira Code', monospace;
-        font-size: 0.8rem;
-        position: relative;
+        background: rgba(255,255,255,0.9);
+        color: #059669;
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 0.75rem;
     }}
-
-    div[data-testid="stFileUploader"] *:not([role="listitem"]) {{
+    div[data-testid="stFileUploader"] * {{
         color: transparent !important;
     }}
     </style>
